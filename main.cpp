@@ -2,6 +2,7 @@
 #include<string>
 #include "sqlite/sqlite3.h"
 #include "utilFunctions.h"
+#include "storageManipulation.h"
 using namespace std;
 
 
@@ -44,6 +45,7 @@ void menu(sqlite3* db){
         switch(selection){
             case 1:
                 //add a box
+                addBoxtoDB(db);
                 break;
             case 2:
                 //add items to box

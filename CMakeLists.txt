@@ -7,7 +7,8 @@ enable_testing()
 add_executable(storageSystem main.cpp 
 sqlite/sqlite3.h 
 sqlite/sqlite3.c
-utilFunctions.h)
+utilFunctions.h
+storageManipulation.h)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

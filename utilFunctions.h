@@ -1,3 +1,4 @@
+#include<iostream>
 #include<string>
 #include "sqlite/sqlite3.h"
 using namespace std;
@@ -20,6 +21,7 @@ void noReturnExec(string sqlExec, sqlite3* db){
     if(rc != SQLITE_OK){
         cout << "ERROR: " << err << endl;
     }
+
 }
 
 /////////////////////////////
