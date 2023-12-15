@@ -7,7 +7,7 @@ void noReturnExec(string sqlExec, sqlite3* db);
 void initTables(sqlite3* db);
 
 
-
+////////////////////////////////////////////////
 
 void noReturnExec(string sqlExec, sqlite3* db){
     char* err;
@@ -19,6 +19,7 @@ void noReturnExec(string sqlExec, sqlite3* db){
     }
 }
 
+/////////////////////////////
 
 void initTables(sqlite3* db){
     //Create Tables
