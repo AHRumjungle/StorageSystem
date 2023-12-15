@@ -2,8 +2,11 @@
 #include "sqlite/sqlite3.h"
 using namespace std;
 
-void noReturnExec(string sqlExec, sqlite3* db);
+// Other Functions
+void menu(sqlite3* db);
 
+// Utility Functions
+void noReturnExec(string sqlExec, sqlite3* db);
 void initTables(sqlite3* db);
 
 
