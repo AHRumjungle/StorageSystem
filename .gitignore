@@ -3,3 +3,7 @@
 
 #VSCode
 .vscode/
+
+#test db
+layout.db
+layout.db-journal
