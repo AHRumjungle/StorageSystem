@@ -50,3 +50,20 @@ void initTables(sqlite3* db){
 
     noReturnExec(itemBoxTable, db);
 }
+
+
+
+long long int safeLongIntInput(){
+    string input;
+
+    cin >> input;
+
+    //try{
+    //    return stoi(input);
+    //}
+    //catch(){
+    //    return -1;
+    //}
+
+    return stoll(input);
+}

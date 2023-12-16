@@ -7,7 +7,7 @@ using namespace std;
 
 
 void addBoxtoDB(sqlite3* db){
-    int serial;
+    long long int serial;
     string location;
     string description;
 
@@ -21,7 +21,7 @@ void addBoxtoDB(sqlite3* db){
         cout << "Box Serial Number: ";
 
         
-        cin >> serial;
+        serial = safeLongIntInput();
 
         cout << "Box Location: ";
 
@@ -62,8 +62,8 @@ void addBoxtoDB(sqlite3* db){
 
 
 
-    cout << sql << endl; //debug
-    system("pause"); //debug
+    //cout << sql << endl; //debug
+    //system("pause"); //debug
 
 
     noReturnExec(sql, db);
