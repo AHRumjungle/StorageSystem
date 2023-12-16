@@ -94,14 +94,14 @@ void addItem(sqlite3* db){
 
     getline(cin, description);
 
-    cout << "Item Serial(Optinal): ";
+    cout << "Item Serial(Optinal, input 0 to skip): ";
 
     long long int serial = safeLongIntInput();
 
 
     string sql;
 
-    if(serial == -1){
+    if(serial == -1 || serial == 0){
         //Invalid or no input
 
          sql = "INSERT INTO item (name, description) "
