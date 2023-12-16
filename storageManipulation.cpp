@@ -74,13 +74,65 @@ void addBoxtoDB(sqlite3* db){
 
 }
 
+////////////////
+
+void addItem(sqlite3* db){
+    system("cls");
+
+    cout << "Add an Item to Database\n";
+    cout << "=======================\n";
+    cout << "Item Name: ";
+
+    string name;
+    cin.ignore();
+    getline(cin, name);
+
+
+    cout << "Item Description: ";
+
+    string description;
+
+    getline(cin, description);
+
+    cout << "Item Serial(Optinal): ";
+
+    long long int serial = safeLongIntInput();
+
+
+    string sql;
+
+    if(serial == -1){
+        //Invalid or no input
+
+         sql = "INSERT INTO item (name, description) "
+                 "VALUES (\"" + name + "\", \"" + description + "\");";
+
+
+    }else{
+
+        sql = "INSERT INTO item (serial, name, description) "
+        "VALUES (" + to_string(serial) + " ,\"" + name + "\", \"" + description + "\");";
+
+    }
+
+
+    cout << sql; // debug
+    system("pause"); //debug
+
+
+    if(!noReturnExec(sql, db)){
+        system("pause"); //Pause to show error
+    }
+
+
+}
 
 ////////////////
 
 void queryForBox(sqlite3* db){
     system("cls");
 
-    cout << "Querry for Box\n";
+    cout << "Query for Box\n";
     cout << "==============\n";
     cout << "Serial: ";
 
@@ -90,7 +142,18 @@ void queryForBox(sqlite3* db){
 
     system("cls");
 
+    cout << "==BOX DESCRIPTION==\n";
+
     sqlite3_exec(db, sql.c_str(), coutCallback, NULL, NULL);
+
+
+    cout << "==CONTENTS OF BOX==\n";
+
+    sql = "SELECT * FROM itembox WHERE boxid=" + to_string(serial) + ";";
+
+
+    sqlite3_exec(db, sql.c_str(), coutCallback, NULL, NULL);
+
 
     system("pause");
 }

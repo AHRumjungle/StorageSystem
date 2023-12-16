@@ -52,6 +52,7 @@ void menu(sqlite3* db){
                 break;
             case 3:
                 //Add item
+                addItem(db);
                 break;
             case 4:
                 //querry for a box
