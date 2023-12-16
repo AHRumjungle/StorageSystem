@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
 #include "sqlite/sqlite3.h"
-#include"util.h"
+#include "util.h"
 
 
 
@@ -87,6 +87,8 @@ int coutCallbackWide(void* notUsed, int argc, char** argv, char** azColname){
     return 0;
     
 }
+
+//////////////////
 
 int coutCallbackDense(void* notUsed, int argc, char** argv, char** azColname){
 

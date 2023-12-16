@@ -3,7 +3,7 @@
 #include "sqlite/sqlite3.h"
 using namespace std;
 
-// Other Functions
+// Menu Functions
 void menu(sqlite3* db);
 void addBoxtoDB(sqlite3* db);
 void queryForBox(sqlite3* db);
