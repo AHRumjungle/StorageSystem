@@ -9,7 +9,7 @@ void addBoxtoDB(sqlite3* db);
 void queryForBox(sqlite3* db);
 
 // Utility Functions
-void noReturnExec(string sqlExec, sqlite3* db);
+bool noReturnExec(string sqlExec, sqlite3* db);
 void initTables(sqlite3* db);
 long long int safeLongIntInput();
 

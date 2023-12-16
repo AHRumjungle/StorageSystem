@@ -5,13 +5,16 @@
 
 
 
-void noReturnExec(string sqlExec, sqlite3* db){
+bool noReturnExec(string sqlExec, sqlite3* db){
     char* err;
 
     int rc = sqlite3_exec(db, sqlExec.c_str(), NULL, NULL, &err);
 
     if(rc != SQLITE_OK){
         cout << "ERROR: " << err << endl;
+        return false;
+    }else{
+        return true;
     }
 
 }
@@ -48,7 +51,8 @@ void initTables(sqlite3* db){
 	"FOREIGN KEY(itemid) REFERENCES item(id)"
     ");";
 
-    noReturnExec(itemBoxTable, db);
+ noReturnExec(itemBoxTable, db);
+
 }
 
 
@@ -58,12 +62,14 @@ long long int safeLongIntInput(){
 
     cin >> input;
 
-    //try{
-    //    return stoi(input);
-    //}
-    //catch(){
-    //    return -1;
-    //}
+    try{
+        return stoll(input);
+    }
+    catch(std::invalid_argument){
+        cout << "Invalid Input\n";
+        system("pause");
+        return -1;
+    }
 
     return stoll(input);
 }

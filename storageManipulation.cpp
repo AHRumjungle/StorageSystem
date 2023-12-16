@@ -66,9 +66,11 @@ void addBoxtoDB(sqlite3* db){
     //system("pause"); //debug
 
 
-    noReturnExec(sql, db);
+    if(!noReturnExec(sql, db)){
+        system("pause"); //Pause to show error
+    }
     
-    system("pause");
+    
 
 }
 
@@ -86,7 +88,7 @@ void queryForBox(sqlite3* db){
 
     string sql = "SELECT * FROM box WHERE serial=" + to_string(serial) + ";";
 
-
+    system("cls");
 
     sqlite3_exec(db, sql.c_str(), coutCallback, NULL, NULL);
 
