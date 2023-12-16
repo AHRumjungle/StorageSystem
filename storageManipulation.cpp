@@ -144,7 +144,7 @@ void queryForBox(sqlite3* db){
 
     cout << "==BOX DESCRIPTION==\n";
 
-    sqlite3_exec(db, sql.c_str(), coutCallback, NULL, NULL);
+    sqlite3_exec(db, sql.c_str(), coutCallbackWide, NULL, NULL);
 
 
     cout << endl << "==CONTENTS OF BOX==\n";
@@ -157,7 +157,7 @@ void queryForBox(sqlite3* db){
 
 
 
-    sqlite3_exec(db, sql2.c_str(), coutCallback, NULL, NULL);
+    sqlite3_exec(db, sql2.c_str(), coutCallbackDense, NULL, NULL);
 
 
     system("pause");
