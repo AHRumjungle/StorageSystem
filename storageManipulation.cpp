@@ -183,9 +183,6 @@ void addItemToBox(sqlite3* db){
         system("cls");
         cout << "Add Item to Box by Name\n";
         cout << "=======================\n";
-        cout << "Box Serial: ";
-
-        long long int serial = safeLongIntInput();
 
         cout << "Item Name: ";
 
@@ -196,6 +193,11 @@ void addItemToBox(sqlite3* db){
         cout << "Quantity: ";
 
         int quantity = safeIntInput();
+
+        cout << "Box Serial: ";
+
+        long long int serial = safeLongIntInput();
+
 
         string sql = "INSERT INTO boxitem (boxid, itemid, quantity) "
                      "SELECT box.id, item.id, " + to_string(quantity) + " "
@@ -215,9 +217,6 @@ void addItemToBox(sqlite3* db){
          system("cls");
         cout << "Add Item to Box by Serial\n";
         cout << "=======================\n";
-        cout << "Box Serial: ";
-
-        long long int serial = safeLongIntInput();
 
         cout << "Item Serial: ";
 
@@ -226,6 +225,11 @@ void addItemToBox(sqlite3* db){
         cout << "Quantity: ";
 
         int quantity = safeIntInput();
+
+
+        cout << "Box Serial: ";
+
+        long long int serial = safeLongIntInput();
 
         string sql = "INSERT INTO boxitem (boxid, itemid, quantity) "
                      "SELECT box.id, item.id, " + to_string(quantity) + " "
@@ -247,7 +251,7 @@ void searchForItem(sqlite3* db){
 
     cout << "Search for Item\n";
     cout << "===============\n";
-    cout << "1. Fuzzy Search by Item Name\n";
+    cout << "1. Fuzzy Search by Item Name/Description\n";
     cout << "2. Search by Item Serial\n";
 
 
@@ -255,9 +259,9 @@ void searchForItem(sqlite3* db){
 
     if(input == 1){
         system("cls");
-        cout << "Search for Item by Name\n";
+        cout << "Search for Item by Name/Description\n";
         cout << "=======================\n";
-        cout << "Item Name: ";
+        cout << "Item Name/Description: ";
 
         string itemName;
 
@@ -271,7 +275,8 @@ void searchForItem(sqlite3* db){
                      "FROM box "
                      "JOIN boxitem ON box.id = boxitem.boxid "
                      "JOIN item ON item.id = boxitem.itemid "
-                     "WHERE item.name LIKE '%' || \"" + itemName + "\" || '%';";
+                     "WHERE item.name LIKE '%' || \"" + itemName + "\" || '%' " 
+                     "OR item.description LIKE '%' || \"" + itemName + "\" || '%';";
 
 
         sqlite3_exec(db, sql.c_str(), coutCallbackDense, NULL, NULL);
