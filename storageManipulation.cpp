@@ -282,6 +282,30 @@ void searchForItem(sqlite3* db){
 
 
     }else if(input == 2){
+         system("cls");
+        cout << "Search for Item by Serial\n";
+        cout << "=======================\n";
+        cout << "Item Serial: ";
+
+        long long int serial = safeLongIntInput();
+
+
+        cout << endl;
+        cout << "==RESULTS==\n";
+
+        string sql = "SELECT item.name, box.location AS \"box location\", box.description as \"box description\", boxitem.quantity "
+                     "FROM box "
+                     "JOIN boxitem ON box.id = boxitem.boxid "
+                     "JOIN item ON item.id = boxitem.itemid "
+                     "WHERE item.serial=" + to_string(serial) + ";";
+
+
+        sqlite3_exec(db, sql.c_str(), coutCallbackDense, NULL, NULL);
+
+
+        cout << endl;
+        system("pause");
+
 
     }
 }
