@@ -16,6 +16,10 @@ int main(){
 
     initTables(db);
 
+
+    //Debug Driver
+    removeItemFromBox(db);
+
     menu(db);
 
 

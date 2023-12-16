@@ -319,3 +319,76 @@ void searchForItem(sqlite3* db){
 
     }
 }
+
+
+//////////////////
+
+
+void removeItemFromBox(sqlite3* db){
+
+     system("cls");
+
+    cout << "Remove Item to Box\n";
+    cout << "===============\n";
+    cout << "1. Remove by Item Name\n";
+    cout << "2. Remove by Item Serial\n";
+
+
+    int input = safeIntInput();
+
+    if(input == 1){
+        //Add by Name
+
+        system("cls");
+        cout << "Remove Item to Box by Name\n";
+        cout << "=======================\n";
+
+        cout << "Item Name: ";
+
+        string itemName;
+        cin.ignore();
+        getline(cin, itemName);
+
+
+        cout << "Box Serial: ";
+
+        long long int serial = safeLongIntInput();
+
+
+        string sql = "DELETE FROM boxitem "
+                     "WHERE boxid = ( "
+                     "  SELECT id FROM box WHERE serial = " + to_string(serial) + " "
+                     ") AND itemid = ( "
+                     "  SELECT id FROM item WHERE name LIKE '%' || \"" + itemName + "\" || '%' "
+                     ");";
+
+        noReturnExec(sql, db);
+
+        //system("pause"); //debug
+
+
+    }else if(input == 2){
+        //Remove by Serial
+
+
+         system("cls");
+        cout << "Remove Item to Box by Serial\n";
+        cout << "=======================\n";
+
+        cout << "Item Serial: ";
+
+        long long int itemSerial = safeLongIntInput();
+
+
+        cout << "Box Serial: ";
+
+        long long int serial = safeLongIntInput();
+
+        string sql = "";
+
+        noReturnExec(sql, db);
+
+    }
+
+
+}
