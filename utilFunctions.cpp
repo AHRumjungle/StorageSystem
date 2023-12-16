@@ -77,6 +77,8 @@ long long int safeLongIntInput(){
 
 int coutCallback(void* notUsed, int argc, char** argv, char** azColname){
 
+    //cout << "Results: " << argc << endl; //debug
+
     for(int i = 0; i < argc; i++){
         cout << azColname[i] << ": " << argv[i] << endl;
     }

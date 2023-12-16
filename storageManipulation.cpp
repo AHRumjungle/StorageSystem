@@ -147,12 +147,17 @@ void queryForBox(sqlite3* db){
     sqlite3_exec(db, sql.c_str(), coutCallback, NULL, NULL);
 
 
-    cout << "==CONTENTS OF BOX==\n";
+    cout << endl << "==CONTENTS OF BOX==\n";
 
-    sql = "SELECT * FROM itembox WHERE boxid=" + to_string(serial) + ";";
+    string sql2 = "SELECT item.name, boxitem.quantity "
+                  "FROM box "
+                  "JOIN boxitem ON box.id = boxitem.boxid "
+                  "JOIN item ON item.id = boxitem.itemid "
+                  "WHERE box.serial = " + to_string(serial) + ";";
 
 
-    sqlite3_exec(db, sql.c_str(), coutCallback, NULL, NULL);
+
+    sqlite3_exec(db, sql2.c_str(), coutCallback, NULL, NULL);
 
 
     system("pause");
