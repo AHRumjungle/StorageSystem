@@ -35,7 +35,8 @@ void menu(sqlite3* db){
         cout << "2. Add items to a Box\n";
         cout << "3. Add an Item\n";
         cout << "4. Querry a Box\n";
-        cout << "5. Quit\n";
+        cout << "5. Query for an Item\n";
+        cout << "6. Quit\n";
 
         int selection; 
 
@@ -60,6 +61,10 @@ void menu(sqlite3* db){
                 queryForBox(db);
                 break;
             case 5:
+                //Query for item
+                searchForItem(db);
+                break;
+            case 6:
                 //close data base and exit
 
                 int rc =  sqlite3_close(db);

@@ -74,6 +74,23 @@ long long int safeLongIntInput(){
     return stoll(input);
 }
 
+int safeIntInput(){
+    string input;
+
+    cin >> input;
+
+    try{
+        return stoi(input);
+    }
+    catch(std::invalid_argument){
+        cout << "Invalid Input\n";
+        system("pause");
+        return -1;
+    }
+
+    return stoi(input);
+}
+
 
 int coutCallbackWide(void* notUsed, int argc, char** argv, char** azColname){
 

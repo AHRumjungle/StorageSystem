@@ -239,3 +239,49 @@ void addItemToBox(sqlite3* db){
 
 
 }
+
+///////////////
+
+void searchForItem(sqlite3* db){
+    system("cls");
+
+    cout << "Search for Item\n";
+    cout << "===============\n";
+    cout << "1. Fuzzy Search by Item Name\n";
+    cout << "2. Search by Item Serial\n";
+
+
+    int input = safeIntInput(); //Make a dedicated safeIntInput()?
+
+    if(input == 1){
+        system("cls");
+        cout << "Search for Item by Name\n";
+        cout << "=======================\n";
+        cout << "Item Name: ";
+
+        string itemName;
+
+        cin.ignore();
+        getline(cin, itemName);
+
+        cout << endl;
+        cout << "==RESULTS==\n";
+
+        string sql = "SELECT item.name, box.location AS \"box location\", box.description as \"box description\", boxitem.quantity "
+                     "FROM box "
+                     "JOIN boxitem ON box.id = boxitem.boxid "
+                     "JOIN item ON item.id = boxitem.itemid "
+                     "WHERE item.name LIKE '%' || \"" + itemName + "\" || '%';";
+
+
+        sqlite3_exec(db, sql.c_str(), coutCallbackDense, NULL, NULL);
+
+
+        cout << endl;
+        system("pause");
+
+
+    }else if(input == 2){
+
+    }
+}
