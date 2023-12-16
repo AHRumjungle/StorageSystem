@@ -23,6 +23,11 @@ void addBoxtoDB(sqlite3* db){
         
         serial = safeLongIntInput();
 
+        if(serial == 0){
+            //exit option
+            return;
+        }
+
         cout << "Box Location: ";
 
         
@@ -116,8 +121,8 @@ void addItem(sqlite3* db){
     }
 
 
-    cout << sql; // debug
-    system("pause"); //debug
+    //cout << sql; // debug
+    //system("pause"); //debug
 
 
     if(!noReturnExec(sql, db)){
@@ -255,7 +260,7 @@ void searchForItem(sqlite3* db){
     cout << "2. Search by Item Serial\n";
 
 
-    int input = safeIntInput(); //Make a dedicated safeIntInput()?
+    int input = safeIntInput();
 
     if(input == 1){
         system("cls");
