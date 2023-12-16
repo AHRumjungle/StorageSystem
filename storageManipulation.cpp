@@ -175,7 +175,7 @@ void addItemToBox(sqlite3* db){
     cout << "2. Add by Item Serial\n";
 
 
-    int input = safeLongIntInput(); //Make a dedicated safeIntInput()?
+    int input = safeIntInput();
 
     if(input == 1){
         //Add by Name
@@ -195,7 +195,7 @@ void addItemToBox(sqlite3* db){
 
         cout << "Quantity: ";
 
-        int quantity = safeLongIntInput(); //Make safeIntInput()
+        int quantity = safeIntInput();
 
         string sql = "INSERT INTO boxitem (boxid, itemid, quantity) "
                      "SELECT box.id, item.id, " + to_string(quantity) + " "
@@ -225,7 +225,7 @@ void addItemToBox(sqlite3* db){
 
         cout << "Quantity: ";
 
-        int quantity = safeLongIntInput(); //Make safeIntInput()
+        int quantity = safeIntInput();
 
         string sql = "INSERT INTO boxitem (boxid, itemid, quantity) "
                      "SELECT box.id, item.id, " + to_string(quantity) + " "
