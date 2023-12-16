@@ -40,7 +40,7 @@ void menu(sqlite3* db){
 
         int selection; 
 
-        cin >> selection; //fix at some point to be better
+        selection = safeIntInput();
 
 
         switch(selection){
@@ -64,6 +64,13 @@ void menu(sqlite3* db){
                 //Query for item
                 searchForItem(db);
                 break;
+            case -1:
+                break;
+            default:
+                cout << "Invalid Input\n";
+                system("pause");
+                break;
+            
             case 6:
                 //close data base and exit
 
