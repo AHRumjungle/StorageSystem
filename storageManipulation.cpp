@@ -162,3 +162,53 @@ void queryForBox(sqlite3* db){
 
     system("pause");
 }
+
+
+////////////////
+
+void addItemToBox(sqlite3* db){
+    system("cls");
+
+    cout << "Add Item to Box\n";
+    cout << "===============\n";
+    cout << "1. Add by Item Name\n";
+    cout << "2. Add by Item Serial\n";
+
+
+    int input = safeLongIntInput(); //Make a dedicated safeIntInput()?
+
+    if(input == 1){
+        system("cls");
+        cout << "Add Item to Box by Name\n";
+        cout << "=======================\n";
+        cout << "Box Serial: ";
+
+        long long int serial = safeLongIntInput();
+
+        cout << "Item Name: ";
+
+        string itemName;
+        cin.ignore();
+        getline(cin, itemName);
+
+        cout << "Quantity: ";
+
+        int quantity = safeLongIntInput(); //Make safeIntInput()
+
+        string sql = "INSERT INTO boxitem (boxid, itemid, quantity) "
+                     "SELECT box.id, item.id, " + to_string(quantity) + " "
+                     "FROM box, item "
+                     "WHERE box.serial = " + to_string(serial) + " "
+                     "AND item.name = \"" + itemName + "\";";
+
+        noReturnExec(sql, db);
+
+        system("pause"); //debug
+
+
+    }else if(input == 2){
+
+    }
+
+
+}

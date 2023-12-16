@@ -8,6 +8,7 @@ void menu(sqlite3* db);
 void addBoxtoDB(sqlite3* db);
 void queryForBox(sqlite3* db);
 void addItem(sqlite3* db);
+void addItemToBox(sqlite3* db);
 
 // Utility Functions
 bool noReturnExec(string sqlExec, sqlite3* db);
