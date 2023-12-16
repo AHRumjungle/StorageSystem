@@ -71,3 +71,24 @@ void addBoxtoDB(sqlite3* db){
     system("pause");
 
 }
+
+
+////////////////
+
+void queryForBox(sqlite3* db){
+    system("cls");
+
+    cout << "Querry for Box\n";
+    cout << "==============\n";
+    cout << "Serial: ";
+
+    long long int serial = safeLongIntInput();
+
+    string sql = "SELECT * FROM box WHERE serial=" + to_string(serial) + ";";
+
+
+
+    sqlite3_exec(db, sql.c_str(), coutCallback, NULL, NULL);
+
+    system("pause");
+}

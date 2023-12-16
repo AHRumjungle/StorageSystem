@@ -55,6 +55,7 @@ void menu(sqlite3* db){
                 break;
             case 4:
                 //querry for a box
+                queryForBox(db);
                 break;
             case 5:
                 //close data base and exit
