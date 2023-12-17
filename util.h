@@ -7,6 +7,7 @@ using namespace std;
 void menu(sqlite3* db);
 void addSubMenu(sqlite3* db);
 void querySubMenu(sqlite3* db);
+void removeSubMenu(sqlite3* db);
 
 
 // User selected Actions
