@@ -483,9 +483,56 @@ void removeItemFromDatabase(sqlite3* db){
     }
 
     if(selection3 == 1){
+        //Remove by Name
+
+
+        system("cls");
+        cout << "Remove Item From Database by Name\n";
+        cout << "===================================\n";
+        cout << "Item Name: ";
+
+        string itemName;
+
+        cin.ignore();
+        getline(cin, itemName);
+
+         while(true){
+            system("cls");
+            cout << "==DANGER==\n";
+            cout << "You are about to delete an item with the name: \"" << itemName << "\" and all connections with boxes.\n";
+            cout << "Are you sure you want to continue? (y, n):\n";
+
+            char choice;
+
+            cin >> choice;
+
+            if(choice == 'n'){
+
+            return;
+
+            }else if(choice == 'y'){
+
+                string sql1 = "DELETE FROM boxitem WHERE itemid = (SELECT ID FROM item WHERE name = \"" + itemName + "\");";
+
+                noReturnExec(sql1, db);
+
+                string sql2 = "DELETE FROM item WHERE name = \"" + itemName + "\";";
+
+                noReturnExec(sql2, db);
+
+                cout << "Item with name \"" << itemName << "\" has been deleted\n";
+                system("pause");
+                return;
+
+            }
+         }
+
+
 
     }else if(selection3 == 2){
-         system("cls");
+        //Remove by Serial
+
+        system("cls");
         cout << "Remove Item From Database by Serial\n";
         cout << "===================================\n";
         cout << "Item Serial: ";
