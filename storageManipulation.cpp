@@ -281,9 +281,17 @@ void searchForItem(sqlite3* db){
         getline(cin, itemName);
 
         cout << endl;
+        cout << "==CLOSEST MATCHES==\n";
+
+        string sql1 = "SELECT name FROM item WHERE name LIKE '%' || \"" + itemName + "\" || '%' LIMIT 3;";
+
+        sqlite3_exec(db, sql1.c_str(), coutCallbackDense, NULL, NULL);
+
+
+        cout << endl;
         cout << "==RESULTS==\n";
 
-        string sql = "SELECT item.name, box.location AS \"box location\", box.description as \"box description\", boxitem.quantity "
+        string sql2 = "SELECT item.name, box.location AS \"box location\", box.description as \"box description\", boxitem.quantity "
                      "FROM box "
                      "JOIN boxitem ON box.id = boxitem.boxid "
                      "JOIN item ON item.id = boxitem.itemid "
@@ -291,7 +299,7 @@ void searchForItem(sqlite3* db){
                      "OR item.description LIKE '%' || \"" + itemName + "\" || '%';";
 
 
-        sqlite3_exec(db, sql.c_str(), coutCallbackDense, NULL, NULL);
+        sqlite3_exec(db, sql2.c_str(), coutCallbackDense, NULL, NULL);
 
 
         cout << endl;
