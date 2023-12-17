@@ -69,31 +69,37 @@ void addSubMenu(sqlite3* db){
         system("cls");
         cout << "Add Menu\n";
         cout << "========\n";
-        cout << "1. Add Item to Database\n";
-        cout << "2. Add Box to Database\n";
-        cout << "3. Add Item to Box\n";
+        cout << "1. Add Item to Box\n";
+        cout << "2. Add Item to Database\n";
+        cout << "3. Add Box to Database\n";
         cout << "0. Back\n";
 
         int selection2 = safeIntInput();
 
         switch(selection2){
             case 1:
-                //Add Item
-                addItem(db);
+                //Add Item to Box
+                addItemToBox(db);
                 break;
+
             case 2:
+                //Add item
+                 addItem(db);
+                break;
+
+            case 3:
                 //Add Box
                 addBoxtoDB(db);
                 break;
-            case 3:
-                //Add item to box
-                addItemToBox(db);
-                break;
+
+
             case 0:
                 return;
                 break;
+
             case -1:
                 break;
+                
             default:
                 cout << "Invalid Input\n";
                 system("pause");
