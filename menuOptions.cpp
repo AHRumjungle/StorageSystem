@@ -25,6 +25,10 @@ void menu(sqlite3* db){
             case 1:
                 //Add Menu
                 addSubMenu(db);
+                break;
+            case 2:
+                querySubMenu(db);
+                break;
             case -1:
                 break;
             default:
@@ -49,6 +53,7 @@ void menu(sqlite3* db){
 
 }
 
+////////////////////////////
 
 void addSubMenu(sqlite3* db){
     while(true){
@@ -87,5 +92,40 @@ void addSubMenu(sqlite3* db){
         }
 
 
+    }
+}
+
+
+///////////////////
+
+
+void querySubMenu(sqlite3* db){
+    while(true){
+        system("cls");
+        cout << "Query Menu\n";
+        cout << "==========\n";
+        cout << "1. Query For Item\n";
+        cout << "2. Query For Box\n";
+        cout << "0. Back\n";
+
+        int selection2 = safeIntInput();
+
+        switch(selection2){
+            case 1:
+                searchForItem(db);
+                break;
+            case 2:
+                queryForBox(db);
+                break;
+            case 0:
+                return;
+                break;
+            case -1:
+                break;
+            default:
+                cout << "Invalid Input\n";
+                system("pause");
+                break;
+        }
     }
 }
