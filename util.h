@@ -5,6 +5,10 @@ using namespace std;
 
 // Menu Functions
 void menu(sqlite3* db);
+void addSubMenu(sqlite3* db);
+
+
+// User selected Actions
 void addBoxtoDB(sqlite3* db);
 void queryForBox(sqlite3* db);
 void addItem(sqlite3* db);

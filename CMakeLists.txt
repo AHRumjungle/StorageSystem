@@ -9,7 +9,8 @@ sqlite/sqlite3.h
 sqlite/sqlite3.c
 util.h
 utilFunctions.cpp
-storageManipulation.cpp)
+storageManipulation.cpp
+menuOptions.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
