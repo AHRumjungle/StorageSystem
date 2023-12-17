@@ -2,6 +2,7 @@
 #include<string>
 #include "sqlite/sqlite3.h"
 #include "util.h"
+using namespace std;
 
 
 void menu(sqlite3* db){
