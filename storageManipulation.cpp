@@ -463,3 +463,68 @@ void removeBoxFromDatabase(sqlite3* db){
     
 
 }
+
+
+///////////////////////////
+
+
+void removeItemFromDatabase(sqlite3* db){
+    system("cls");
+    cout << "Remove Item From Database\n";
+    cout << "=========================\n";
+    cout << "1. Remove Item by Name\n";
+    cout << "2. Remove Item by Serial\n";
+    cout << "0. Back\n";
+
+    int selection3 = safeIntInput();
+
+    if(selection3 == 0){
+        return;
+    }
+
+    if(selection3 == 1){
+
+    }else if(selection3 == 2){
+         system("cls");
+        cout << "Remove Item From Database by Serial\n";
+        cout << "===================================\n";
+        cout << "Item Serial: ";
+
+        long long int itemSerial = safeLongIntInput();
+
+
+        while(true){
+            system("cls");
+            cout << "==DANGER==\n";
+            cout << "You are about to delete an item with the serial: " << itemSerial << " and all connections with boxes.\n";
+            cout << "Are you sure you want to continue? (y, n):\n";
+
+            char choice;
+
+            cin >> choice;
+
+            if(choice == 'n'){
+
+            return;
+
+            }else if(choice == 'y'){
+                
+                string sql1 = "DELETE FROM boxitem WHERE itemid = (SELECT id FROM item WHERE serial = " + to_string(itemSerial) + ");";
+
+                noReturnExec(sql1, db);
+
+                string sql2 = "DELETE FROM item WHERE serial = " + to_string(itemSerial) + ";";
+
+                noReturnExec(sql2, db);
+
+                
+                cout << "Item with serial: " << itemSerial << " has ben deleted from the database\n";
+                system("pause");
+
+                return;
+
+            }
+        }
+
+    }
+}
