@@ -283,7 +283,11 @@ void searchForItem(sqlite3* db){
         cout << endl;
         cout << "==CLOSEST MATCHES==\n";
 
-        string sql1 = "SELECT name FROM item WHERE name LIKE '%' || \"" + itemName + "\" || '%' LIMIT 3;";
+        string sql1 = "SELECT name FROM item WHERE name LIKE '%' || \"" + itemName + "\" || '%' " 
+        "OR description LIKE '%' || \"" + itemName + "\" || '%' LIMIT 3;";
+
+        //cout << sql1 << endl; //Debug
+        //system("pause"); //Debug
 
         sqlite3_exec(db, sql1.c_str(), coutCallbackDense, NULL, NULL);
 
