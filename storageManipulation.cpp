@@ -79,7 +79,9 @@ void addBoxtoDB(sqlite3* db){
 
 }
 
+
 ////////////////
+
 
 void addItem(sqlite3* db){
     system("cls");
@@ -132,7 +134,9 @@ void addItem(sqlite3* db){
 
 }
 
+
 ////////////////
+
 
 void queryForBox(sqlite3* db){
     system("cls");
@@ -170,6 +174,7 @@ void queryForBox(sqlite3* db){
 
 
 ////////////////
+
 
 void addItemToBox(sqlite3* db){
     system("cls");
@@ -249,7 +254,9 @@ void addItemToBox(sqlite3* db){
 
 }
 
+
 ///////////////
+
 
 void searchForItem(sqlite3* db){
     system("cls");
@@ -399,5 +406,60 @@ void removeItemFromBox(sqlite3* db){
 
     }
 
+
+}
+
+
+////////////////////////
+
+
+void removeBoxFromDatabase(sqlite3* db){
+    system("cls");
+    cout << "Remove Box From Database\n";
+    cout << "========================\n";
+    cout << "Box Serial (Type 0 to quit): ";
+
+
+    long long int boxSerial = safeLongIntInput();
+
+    if(boxSerial == 0){
+        return;
+    }
+
+    while(true){
+
+    
+        system("cls");
+        cout << "==DANGER==\n";
+        cout << "You are about to delete a box with the serial: " << boxSerial << " and all connections with items.\n";
+        cout << "Are you sure you want to continue? (y, n):\n";
+
+        char choice;
+
+        cin >> choice;
+
+
+        if(choice == 'n'){
+            return;
+        }else if(choice == 'y'){
+
+            string sql1 = "DELETE FROM boxitem WHERE boxid = (SELECT id FROM box WHERE serial = " + to_string(boxSerial) + ");";
+
+            noReturnExec(sql1, db);
+
+
+            string sql2 = "DELETE FROM box WHERE serial = " + to_string(boxSerial) + ";";
+
+            noReturnExec(sql2, db);
+
+
+            cout << "Deleted box with serial: " << boxSerial << endl;
+            system("pause");
+
+            return;
+        }
+
+    }
+    
 
 }

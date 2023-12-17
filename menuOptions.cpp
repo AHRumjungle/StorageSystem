@@ -162,10 +162,12 @@ void removeSubMenu(sqlite3* db){
 
         case 2:
             //Remove item from database
+            
             break;
         
         case 3:
             //Remove box from database
+            removeBoxFromDatabase(db);
             break;
         
         case 0:

@@ -17,6 +17,7 @@ void addItem(sqlite3* db);
 void addItemToBox(sqlite3* db);
 void searchForItem(sqlite3* db);
 void removeItemFromBox(sqlite3* db);
+void removeBoxFromDatabase(sqlite3* db);
 
 // Utility Functions
 bool noReturnExec(string sqlExec, sqlite3* db);
