@@ -565,7 +565,7 @@ void removeItemFromDatabase(sqlite3* db){
                 noReturnExec(sql2, db);
 
                 
-                cout << "Item with serial: " << itemSerial << " has ben deleted from the database\n";
+                cout << "Item with serial: " << itemSerial << " has been deleted from the database\n";
                 system("pause");
 
                 return;
