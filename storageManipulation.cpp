@@ -284,7 +284,8 @@ void searchForItem(sqlite3* db){
         cout << "==CLOSEST MATCHES==\n";
 
         string sql1 = "SELECT name FROM item WHERE name LIKE '%' || \"" + itemName + "\" || '%' " 
-        "OR description LIKE '%' || \"" + itemName + "\" || '%' LIMIT 3;";
+                      "OR description LIKE '%' || \"" + itemName + "\" || '%' "
+                      "LIMIT 3;";
 
         //cout << sql1 << endl; //Debug
         //system("pause"); //Debug
@@ -585,5 +586,68 @@ void removeItemFromDatabase(sqlite3* db){
             }
         }
 
+    }
+}
+
+
+//////////////////////
+
+
+void motifyQuantity(sqlite3* db){
+    system("cls");
+
+    cout << "Motify Quantity of Item in Box\n";
+    cout << "==============================\n";
+    cout << "1. Motify by Item Name\n";
+    cout << "2. Motify by Item Serial\n";
+    cout << "0. Back\n";
+
+    int selection2 = safeIntInput();
+
+    if(selection2 == 0){
+        return;
+    }
+
+
+
+    if(selection2 == 1){
+        //Motify by Name
+        system("cls");
+        cout << "Motify Quantity of Item in Box by Name\n";
+        cout << "======================================\n";
+        cout << "Item Name: ";
+
+        string itemName;
+        cin.ignore();
+        getline(cin, itemName);
+
+        cout << "New Quantity: ";
+        int newQuantity = safeIntInput();
+
+        cout << "Box Serial: ";
+        long long int boxSerial = safeLongIntInput();
+
+
+        string sql = "UPDATE boxitem "
+                     "SET quantity = " + to_string(newQuantity) + " "
+                     "WHERE itemid = "
+                        "(SELECT id FROM item WHERE name = \"" + itemName + "\") " 
+                     "AND boxid = "
+                        "(SELECT id FROM box WHERE serial = " + to_string(boxSerial) + ")"
+                     ";";
+
+
+        //cout << sql << endl; // Debug
+        //system("pause");     //
+
+        noReturnExec(sql, db);
+        
+    }
+
+
+
+
+    if(selection2 == 2){
+        //Motify by Serial
     }
 }

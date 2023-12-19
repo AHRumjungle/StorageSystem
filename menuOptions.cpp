@@ -15,6 +15,7 @@ void menu(sqlite3* db){
         cout << "1. Add\n";
         cout << "2. Query\n";
         cout << "3. Remove\n";
+        cout << "4. Motify\n";
         cout << "0. Exit\n";
      
         int selection; 
@@ -34,6 +35,11 @@ void menu(sqlite3* db){
             
             case 3:
                 removeSubMenu(db);
+                break;
+
+            case 4:
+                //Motify Menu
+                motifySubMenu(db);
                 break;
 
             case -1:
@@ -191,4 +197,40 @@ void removeSubMenu(sqlite3* db){
 
 
     }
+}
+
+//////////////////////
+
+void motifySubMenu(sqlite3* db){
+    while(true){
+        system("cls");
+
+        cout << "Motify Menu\n";
+        cout << "===========\n";
+        cout << "1. Motify Quantity of Item in Box\n";
+        cout << "0. Back\n";
+
+
+        int selection = safeIntInput();
+
+        if(selection == 0){
+            return;
+        }
+
+        if(selection == -1){
+            continue;
+        }
+
+
+        if(selection == 1){
+           //Motify Quantity
+
+            motifyQuantity(db);
+
+        }
+
+   
+    }
+
+
 }

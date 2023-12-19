@@ -8,6 +8,7 @@ void menu(sqlite3* db);
 void addSubMenu(sqlite3* db);
 void querySubMenu(sqlite3* db);
 void removeSubMenu(sqlite3* db);
+void motifySubMenu(sqlite3* db);
 
 
 // User selected Actions
@@ -19,6 +20,7 @@ void searchForItem(sqlite3* db);
 void removeItemFromBox(sqlite3* db);
 void removeBoxFromDatabase(sqlite3* db);
 void removeItemFromDatabase(sqlite3* db);
+void motifyQuantity(sqlite3* db);
 
 // Utility Functions
 bool noReturnExec(string sqlExec, sqlite3* db);
