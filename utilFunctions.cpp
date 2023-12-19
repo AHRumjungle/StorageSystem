@@ -19,11 +19,11 @@ bool noReturnExec(string sqlExec, sqlite3* db){
 
 }
 
-
+//////////////////////////////
 
 void initTables(sqlite3* db){
     //Create Tables
-    string itemTable = "CREATE TABLE IF NOT EXISTS item("
+    string itemTable = "CREATE TABLE IF NOT EXISTS item ("
         "id INTEGER NOT NULL UNIQUE," 
         "serial INTEGER UNIQUE," 
         "name TEXT,"
@@ -44,9 +44,11 @@ void initTables(sqlite3* db){
 
 
     string itemBoxTable = "CREATE TABLE IF NOT EXISTS boxitem ("
+    "id INTEGER NOT NULL UNIQUE,"
 	"itemid	INTEGER NOT NULL,"
 	"boxid	INTEGER NOT NULL,"
 	"quantity	INTEGER NOT NULL DEFAULT 0,"
+    "PRIMARY KEY(id AUTOINCREMENT)"
 	"FOREIGN KEY(boxid) REFERENCES box(id),"
 	"FOREIGN KEY(itemid) REFERENCES item(id)"
     ");";
