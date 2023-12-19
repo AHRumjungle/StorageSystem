@@ -675,3 +675,71 @@ void motifyQuantity(sqlite3* db){
         noReturnExec(sql, db);
     }
 }
+
+///////////////////////////////////
+
+void motifyBox(sqlite3* db){
+    system("cls");
+
+    cout << "Motify Box\n";
+    cout << "==========\n";
+    cout << "1. Motify Location\n";
+    cout << "2. Motify Description\n";
+    cout << "0. Back\n";
+
+    int selection = safeIntInput();
+
+    if (selection == 0){
+        return;
+    }
+
+
+    if(selection == 1){
+        //Motify Location
+        system("cls");
+
+        cout << "Motify Box Location\n";
+        cout << "===================\n";
+        cout << "Box Serial: ";
+
+        long long int boxSerial = safeLongIntInput();
+
+        cout << "New Location: ";
+
+        string newLocation = safeAndCheckedStringInput(true);
+
+        string sql = "UPDATE box "
+                     "SET location = \"" + newLocation + "\" "
+                     "WHERE serial = " + to_string(boxSerial) + ";";
+
+        noReturnExec(sql, db);
+
+        return;
+
+    }
+
+    if(selection == 2){
+        //Motify Description
+        system("cls");
+
+        cout << "Motify Box Description\n";
+        cout << "===================\n";
+        cout << "Box Serial: ";
+
+        long long int boxSerial = safeLongIntInput();
+
+        cout << "New Description: ";
+
+        string newDescription = safeAndCheckedStringInput(true);
+
+        string sql = "UPDATE box "
+                     "SET description = \"" + newDescription + "\" "
+                     "WHERE serial = " + to_string(boxSerial) + ";";
+
+        noReturnExec(sql, db);
+
+        return;
+    }
+
+    return;
+}

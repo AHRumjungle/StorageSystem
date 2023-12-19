@@ -208,28 +208,43 @@ void motifySubMenu(sqlite3* db){
         cout << "Motify Menu\n";
         cout << "===========\n";
         cout << "1. Motify Quantity of Item in Box\n";
+        cout << "2. Motify Item\n";
+        cout << "3. Motify Box\n";
         cout << "0. Back\n";
 
 
         int selection = safeIntInput();
 
-        if(selection == 0){
-            return;
+
+        switch(selection){
+
+            case 1:
+                //Motify Quantity
+                motifyQuantity(db);
+                break;
+
+            case 2:
+                //Motify Item
+                break;
+
+            case 3:
+                //Motify Box
+                motifyBox(db);
+                break;
+
+
+            case 0:
+                return;
+                break;
+
+            case -1:
+                break;
+
+            default:
+                cout << "Invalid Input\n";
+                break;
         }
 
-        if(selection == -1){
-            continue;
-        }
-
-
-        if(selection == 1){
-           //Motify Quantity
-
-            motifyQuantity(db);
-
-        }
-
-   
     }
 
 
