@@ -7,13 +7,12 @@ using namespace std;
 /*
 ==TO DO==
 - Convert all serial input to a string input
-- Add a check for all string inputs
-
+    - Change database structure to also include letters in the serial?
 
 */
 
 
-//Mabye change database structure to also include letters in the serial?
+
 
 int main(){
 
@@ -26,15 +25,8 @@ int main(){
     initTables(db);
 
 
-    //Debug Driver
-    //removeItemFromBox(db);
-
     menu(db);
 
 
     return 0;
 }
-
-
-
-
