@@ -609,9 +609,9 @@ void motifyQuantity(sqlite3* db){
     }
 
 
-
     if(selection2 == 1){
         //Motify by Name
+
         system("cls");
         cout << "Motify Quantity of Item in Box by Name\n";
         cout << "======================================\n";
@@ -649,5 +649,33 @@ void motifyQuantity(sqlite3* db){
 
     if(selection2 == 2){
         //Motify by Serial
+
+        system("cls");
+        cout << "Motify Quantity of Item in Box by Serial\n";
+        cout << "========================================\n";
+        cout << "Item Serial: ";
+
+        long long int itemSerial = safeLongIntInput();
+
+        cout << "New Quantity: ";
+        int newQuantity = safeIntInput();
+
+        cout << "Box Serial: ";
+        long long int boxSerial = safeLongIntInput();
+
+
+        string sql = "UPDATE boxitem "
+                     "SET quantity = " + to_string(newQuantity) + " "
+                     "WHERE itemid = "
+                        "(SELECT id FROM item WHERE serial = " + to_string(itemSerial) + ") " 
+                     "AND boxid = "
+                        "(SELECT id FROM box WHERE serial = " + to_string(boxSerial) + ")"
+                     ";";
+
+
+        //cout << sql << endl; // Debug
+        //system("pause");     //
+
+        noReturnExec(sql, db);
     }
 }
