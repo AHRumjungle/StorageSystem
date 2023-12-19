@@ -27,8 +27,12 @@ bool noReturnExec(string sqlExec, sqlite3* db);
 void initTables(sqlite3* db);
 long long int safeLongIntInput();
 int  safeIntInput();
+string safeAndCheckedStringInput(bool doIgnore);
 
 int coutCallbackWide(void* notUsed, int argc, char** argv, char** azColname);
 int coutCallbackDense(void* notUsed, int argc, char** argv, char** azColname);
+
+//Check Functions
+bool blobStringCheck(string blobString);
 
 

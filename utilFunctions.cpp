@@ -129,3 +129,67 @@ int coutCallbackDense(void* notUsed, int argc, char** argv, char** azColname){
     return 0;
     
 }
+
+///////////////
+
+string safeAndCheckedStringInput(bool doIgnore){
+    string workingString;
+
+    if(doIgnore){
+        cin.ignore();
+    }
+
+    getline(cin, workingString);
+
+    if(!blobStringCheck(workingString)){
+        return "";
+    }else{
+        return workingString;
+    }
+
+}
+
+////////////////////////
+
+bool blobStringCheck(string blobString){
+
+    size_t status;
+    //Will return string::npos if it finds nothing
+
+
+    // ';' check
+    status = blobString.find(";");
+    
+
+    if(status != string::npos){
+        cout << "The character ';' is not allowed\n";
+        system("pause");
+        return false;
+    }
+
+
+
+    // '"' check
+    status = blobString.find("\"");
+    
+
+    if(status != string::npos){
+        cout << "The character '\"' is not allowed\n";
+        system("pause");
+        return false;
+    }
+
+
+    // '=' check
+    status = blobString.find("=");
+    
+
+    if(status != string::npos){
+        cout << "The character '=' is not allowed\n";
+        system("pause");
+        return false;
+    }
+
+
+    return true;
+}

@@ -30,16 +30,16 @@ void addBoxtoDB(sqlite3* db){
 
         cout << "Box Location: ";
 
-        
-        cin.ignore();
-        getline(cin, location);
+        location = safeAndCheckedStringInput(true);
+
 
 
         cout << "Box Description: ";
 
         
-        getline(cin, description);
+        description = safeAndCheckedStringInput(false);
 
+  
 
         system("cls");
 
@@ -91,15 +91,14 @@ void addItem(sqlite3* db){
     cout << "Item Name: ";
 
     string name;
-    cin.ignore();
-    getline(cin, name);
+    name = safeAndCheckedStringInput(true);
 
 
     cout << "Item Description: ";
 
     string description;
 
-    getline(cin, description);
+    description = safeAndCheckedStringInput(false);
 
     cout << "Item Serial(Optinal, input 0 to skip): ";
 
@@ -197,8 +196,8 @@ void addItemToBox(sqlite3* db){
         cout << "Item Name: ";
 
         string itemName;
-        cin.ignore();
-        getline(cin, itemName);
+
+        itemName = safeAndCheckedStringInput(true);
 
         cout << "Quantity: ";
 
@@ -224,7 +223,7 @@ void addItemToBox(sqlite3* db){
         //Add by Serial
 
 
-         system("cls");
+        system("cls");
         cout << "Add Item to Box by Serial\n";
         cout << "=======================\n";
 
@@ -277,8 +276,7 @@ void searchForItem(sqlite3* db){
 
         string itemName;
 
-        cin.ignore();
-        getline(cin, itemName);
+        itemName = safeAndCheckedStringInput(true);
 
         cout << endl;
         cout << "==CLOSEST MATCHES==\n";
@@ -375,9 +373,8 @@ void removeItemFromBox(sqlite3* db){
         cout << "Item Name: ";
 
         string itemName;
-        cin.ignore();
-        getline(cin, itemName);
 
+        itemName = safeAndCheckedStringInput(true);
 
         cout << "Box Serial: ";
 
@@ -506,10 +503,9 @@ void removeItemFromDatabase(sqlite3* db){
 
         string itemName;
 
-        cin.ignore();
-        getline(cin, itemName);
+        itemName = safeAndCheckedStringInput(true);
 
-         while(true){
+        while(true){
             system("cls");
             cout << "==DANGER==\n";
             cout << "You are about to delete an item with the name: \"" << itemName << "\" and all connections with boxes.\n";
@@ -618,8 +614,8 @@ void motifyQuantity(sqlite3* db){
         cout << "Item Name: ";
 
         string itemName;
-        cin.ignore();
-        getline(cin, itemName);
+
+        itemName = safeAndCheckedStringInput(true);
 
         cout << "New Quantity: ";
         int newQuantity = safeIntInput();
